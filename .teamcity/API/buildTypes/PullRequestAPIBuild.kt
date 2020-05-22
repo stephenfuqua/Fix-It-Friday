@@ -7,7 +7,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 
 object PullRequestAPIBuild : BuildType ({
     name = "Pull Request Build and Test"
-    templates(ui.templates.BuildAndTestUITemplate)
+    templates(api.templates.BuildAndTestAPITemplate)
 
     triggers {
         vcs {
