@@ -3,7 +3,7 @@ package _Self.vcsRoots
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.vcs.GitVcsRoot
 
-object FixItFriday : GitVcsRoot({
+object FixItFridayVcs : GitVcsRoot({
     name = "Fix-It-Friday"
     url = "https://github.com/%github.organization%/Fix-It-Friday.git"
     branch = "%git.branch.default%"
