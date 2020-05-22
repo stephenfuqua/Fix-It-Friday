@@ -56,12 +56,9 @@ object BuildAndTestUITemplate : Template({
             requiredSpace = "%build.feature.freeDiskSpace%"
             failBuild = true
         }
-        // feature {
-        //     type = "xml-report-plugin"
-        //     param("xmlReportParsing.reportType", "junit")
-        //     param("xmlReportParsing.reportDirs", "+:junit.xml")
-        // }
         // For future reference, once linting is built-in. Probably wrong file name.
+        // and there might be a TeamCity reporter that doesn't require manual pick-up
+        // of the file. If not needed then delete this commented code.
         // feature {
         //     type = "xml-report-plugin"
         //     param("xmlReportParsing.reportType", "jslint")
