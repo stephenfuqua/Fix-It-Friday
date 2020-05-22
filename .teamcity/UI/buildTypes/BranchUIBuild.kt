@@ -5,7 +5,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.VcsTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 
 object BranchUIBuild : BuildType ({
-    templates(UI.BuildAndTestUITemplate)
+    templates(ui.templates.BuildAndTestUITemplate)
 
     triggers {
         vcs {
