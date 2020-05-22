@@ -15,9 +15,7 @@ object PullRequestUIBuild : BuildType ({
             quietPeriodMode = VcsTrigger.QuietPeriodMode.USE_CUSTOM
             quietPeriod = 120
             triggerRules = "+:**"
-            branchFilter = """
-                +:refs/(pull/*)/merge
-            """.trimIndent()
+            branchFilter = "+:refs/pull/*/head"
         }
     }
 

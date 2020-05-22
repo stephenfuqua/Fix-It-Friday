@@ -14,9 +14,7 @@ object BranchUIBuild : BuildType ({
             quietPeriodMode = VcsTrigger.QuietPeriodMode.USE_CUSTOM
             quietPeriod = 120
             triggerRules = "+:**"
-            branchFilter = """
-                +:%git.branch.default%
-            """.trimIndent()
+            branchFilter = "+:<default>"
         }
     }
 })
