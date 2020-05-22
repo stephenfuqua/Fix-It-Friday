@@ -1,13 +1,10 @@
 package _self
 
-import _self.vcsRoots.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.Project
 
 object FixItFridayProject : Project({
     description = "Projects Owned by the ODS Platform Team"
-
-    vcsRoot(FixItFridayVcs)
 
     params {
         param("git.branch.default", "development")

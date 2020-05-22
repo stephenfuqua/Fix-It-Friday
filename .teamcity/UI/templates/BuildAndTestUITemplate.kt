@@ -1,6 +1,5 @@
 package ui.templates
 
-import _self.vcsRoots.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.powerShell
 
@@ -10,8 +9,11 @@ object BuildAndTestUITemplate : Template({
     option("shouldFailBuildOnAnyErrorMessage", "true")
 
     vcs {
-        // Treat the UI project as the build root directory
-        root(FixItFridayVcs, "+:./fixitfriday.ui => .")
+        // To avoid duplicate VCS roots, we don't redefine the vcsroot here in
+        // source code. We can access it through "DslContext.settingsRoot".
+        
+        // Map the UI project as the build root directory.
+        root(DslContext.settingsRoot, "+:./fixitfriday.ui => .")
     }
 
     steps {
