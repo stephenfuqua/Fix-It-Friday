@@ -56,11 +56,11 @@ object BuildAndTestUITemplate : Template({
             requiredSpace = "%build.feature.freeDiskSpace%"
             failBuild = true
         }
-        feature {
-            type = "xml-report-plugin"
-            param("xmlReportParsing.reportType", "junit")
-            param("xmlReportParsing.reportDirs", "+:junit.xml")
-        }
+        // feature {
+        //     type = "xml-report-plugin"
+        //     param("xmlReportParsing.reportType", "junit")
+        //     param("xmlReportParsing.reportDirs", "+:junit.xml")
+        // }
         // For future reference, once linting is built-in. Probably wrong file name.
         // feature {
         //     type = "xml-report-plugin"
