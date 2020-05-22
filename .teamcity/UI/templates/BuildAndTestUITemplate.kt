@@ -1,6 +1,6 @@
-package UI
+package ui.templates
 
-import _Self.vcsRoots.*
+import _self.vcsRoots.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.powerShell
 

@@ -1,4 +1,4 @@
-package UI
+package ui
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.Project
@@ -14,5 +14,5 @@ object UIProject : Project({
         param("version.patch", "0")
     }
 
-    template(BuildAndTestUITemplate)
+    template(ui.templates.BuildAndTestUITemplate)
 })

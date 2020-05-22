@@ -1,10 +1,10 @@
-package _Self
+package _self
 
-import _Self.vcsRoots.*
+import _self.vcsRoots.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.Project
 
-object Project : Project({
+object FixItFridayProject : Project({
     description = "Projects Owned by the ODS Platform Team"
 
     vcsRoot(FixItFridayVcs)
@@ -23,6 +23,6 @@ object Project : Project({
         param("version", "%version.core%-%version.prerelease%")
     }
 
-    subProject(API.APIProject)
-    subProject(UI.UIProject)
+    subProject(api.APIProject)
+    subProject(ui.UIProject)
 })
