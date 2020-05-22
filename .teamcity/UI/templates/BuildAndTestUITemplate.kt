@@ -1,6 +1,7 @@
 package ui.templates
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.freeDiskSpace
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.powerShell
 
 object BuildAndTestUITemplate : Template({
@@ -50,6 +51,11 @@ object BuildAndTestUITemplate : Template({
     }
 
     features {
+        freeDiskSpace {
+            id = "jetbrains.agent.free.space"
+            requiredSpace = "%build.feature.freeDiskSpace%"
+            failBuild = true
+        }
         feature {
             type = "xml-report-plugin"
             param("xmlReportParsing.reportType", "junit")
