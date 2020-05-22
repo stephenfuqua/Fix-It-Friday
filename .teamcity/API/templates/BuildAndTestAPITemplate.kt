@@ -30,7 +30,7 @@ object BuildAndTestAPITemplate : Template({
         }
         dotnetTest {
             name = "Test"
-            projects = "%src.solutionFile"
+            projects = "%src.solutionFile%"
             configuration = "%dotnet.build.configuration%"
             skipBuild = true
             param("dotNetCoverage.dotCover.home.path", "%teamcity.tool.JetBrains.dotCover.CommandLineTools.DEFAULT%")
