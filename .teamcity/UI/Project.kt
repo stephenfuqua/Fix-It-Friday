@@ -8,6 +8,9 @@ object UIProject : Project({
     name = "UI"
     description = "Fix-it-Friday User Interface"
     
+    buildType(ui.buildTypes.PullRequestUIBuild)
+    buildType(ui.buildTypes.BranchUIBuild)
+
     params {        
         param("version.major", "0")
         param("version.minor", "1")
