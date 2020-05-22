@@ -5,6 +5,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.VcsTrigger
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 
 object PullRequestUIBuild : BuildType ({
+    name = "Pull Request Build and Test"
     templates(ui.templates.BuildAndTestUITemplate)
 
     triggers {

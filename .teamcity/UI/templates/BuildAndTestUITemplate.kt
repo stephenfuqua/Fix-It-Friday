@@ -27,7 +27,7 @@ object BuildAndTestUITemplate : Template({
         }
         powerShell {
             name = "Build"
-            id = "BuildAndTestUITemplate_YarnInstall"
+            id = "BuildAndTestUITemplate_YarnBuild"
             formatStderrAsError = true
             scriptMode = script {
                 content = """
@@ -37,7 +37,7 @@ object BuildAndTestUITemplate : Template({
         }
         powerShell {
             name = "Test"
-            id = "BuildAndTestUITemplate_YarnInstall"
+            id = "BuildAndTestUITemplate_YarnTest"
             formatStderrAsError = true
             scriptMode = script {
                 content = """
