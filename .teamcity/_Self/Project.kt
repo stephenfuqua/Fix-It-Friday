@@ -7,6 +7,7 @@ object FixItFridayProject : Project({
     description = "Projects Owned by the ODS Platform Team"
 
     params {
+        param("build.feature.freeDiskSpace", "2gb")
         param("git.branch.default", "development")
         param("git.branch.specification", """
             refs/heads/(*)
