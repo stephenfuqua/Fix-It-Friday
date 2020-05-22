@@ -7,7 +7,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.Project
 object Project : Project({
     description = "Projects Owned by the ODS Platform Team"
 
-    vcsRoot(FixItFriday)
+    vcsRoot(FixItFridayVcs)
 
     params {
         param("git.branch.default", "development")
@@ -23,6 +23,6 @@ object Project : Project({
         param("version", "%version.core%-%version.prerelease%")
     }
 
-    subProject(API.Project)
-    subProject(UI.Project)
+    subProject(API.APIProject)
+    subProject(UI.UIProject)
 })

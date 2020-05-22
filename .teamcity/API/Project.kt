@@ -3,7 +3,7 @@ package API
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.Project
 
-object Project : Project({
+object APIProject : Project({
     id("FixItFriday_API")
     name = "API"
     description = "Fix-it-Friday Web API"
