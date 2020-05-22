@@ -31,4 +31,5 @@ object PullRequestUIBuild : BuildType ({
                 }
             }
         }
+    }
 })
