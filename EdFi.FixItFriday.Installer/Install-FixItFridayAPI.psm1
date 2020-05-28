@@ -115,13 +115,13 @@ function Install-FixItFridayAPI {
         [int]
         $WebSitePort = 443,
 
-        # Path for the web application. Default: "c:\inetpub\Ed-Fi\FixItFridayApi".
+        # Path for the web application. Default: "c:\inetpub\Ed-Fi\FixItFridayAPI".
         [string]
-        $WebApplicationPath = "c:\inetpub\Ed-Fi\FixItFridayApi", # NB: _must_ use backslash with IIS settings
+        $WebApplicationPath = "c:\inetpub\Ed-Fi\FixItFridayAPI", # NB: _must_ use backslash with IIS settings
 
-        # Web application name. Default: "FixItFridayApi".
+        # Web application name. Default: "FixItFridayAPI".
         [string]
-        $WebApplicationName = "FixItFridayApi",
+        $WebApplicationName = "FixItFridayAPI",
 
         # Database connection information dictionary.
         #
