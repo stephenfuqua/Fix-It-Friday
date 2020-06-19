@@ -9,12 +9,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.powerShell
 object DeployUIBuild : BuildType ({
     name = "Deploy"
 
-    params {
-        param("octopus.release.version","<placeholder value>")
-        param("octopus.release.project", "Fix-it-Friday UI")
-        param("octopus.project.id", "Projects-112")
-    }
-
     features {
         // Default setting is to clean before next build
         swabra {

@@ -10,7 +10,7 @@ object BranchUIBuild : BuildType ({
     name = "Branch Build and Test"
     templates(ui.templates.BuildAndTestUITemplate)
 
-    artifactRules = "+:./fixitfriday.ui/eng/*.nupkg"
+    artifactRules = "+:%project.directory%/eng/*.nupkg"
 
     features {
         // Default setting is to clean before next build
@@ -23,7 +23,7 @@ object BranchUIBuild : BuildType ({
         powerShell {
             name = "Package"
             id = "BranchUIBuild_Package"
-            workingDir = "./fixitfriday.ui/eng"
+            workingDir = "%project.directory%/eng"
             formatStderrAsError = true
             scriptMode = script {
                 content = """
