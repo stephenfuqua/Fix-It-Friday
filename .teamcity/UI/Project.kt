@@ -17,9 +17,5 @@ object UIProject : Project({
         param("octopus.release.version","<placeholder value>")
         param("octopus.release.project", "Fix-it-Friday UI")
         param("octopus.project.id", "Projects-112")
-        param("vcs.checkout.rules","""
-        +:.teamcity => .teamcity
-        +:%project.directory% => %project.directory%
-        """.trimIndent())
     }
 })
