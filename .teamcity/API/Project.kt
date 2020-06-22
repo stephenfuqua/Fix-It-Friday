@@ -13,7 +13,7 @@ object APIProject : Project({
     buildType(api.buildTypes.DeployAPIBuild)
 
     params{
-        param("project.directory", "./fixitfriday.api");
+        param("project.directory", "./EdFi.FIF.API");
         param("octopus.release.version","<placeholder value>")
         param("octopus.release.project", "Fix-it-Friday API")
         param("octopus.project.id", "Projects-111")
