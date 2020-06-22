@@ -38,7 +38,7 @@ object PullRequestTemplate : BuildAndTestBaseClass() {
                 id ="vcsTrigger"
                 quietPeriodMode = VcsTrigger.QuietPeriodMode.USE_CUSTOM
                 quietPeriod = 120
-                triggerRules = "+:%project.directory%"
+                triggerRules = "%vcs.exclude.directories%"
                 // This allows triggering on "anything" and then removes
                 // triggering on the default branch and in feature branches,
                 // thus leaving only the pull requests.
