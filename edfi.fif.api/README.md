@@ -6,8 +6,8 @@ GraphQL-based API for supporting the Ed-Fi Fix-it-Friday solution.
 
 ## Installation
 
-```bash
-$ npm install
+```powershell
+yarn install
 ```
 
 ## Running the app
@@ -34,4 +34,13 @@ $ npm run test:e2e
 
 # test coverage
 $ npm run test:cov
+```
+
+## TeamCity
+
+Additional commands for TeamCity support
+
+```powershell
+yarn test:ci
+yarn lint:ci
 ```
