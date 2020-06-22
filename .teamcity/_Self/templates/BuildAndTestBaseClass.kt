@@ -10,7 +10,7 @@ open class BuildAndTestBaseClass : Template({
     option("shouldFailBuildOnAnyErrorMessage", "true")
 
     vcs {
-        root(DslContext.settingsRoot, "+:.")
+        root(DslContext.settingsRoot, "%vcs.checkout.rules%")
     }
 
     steps {
