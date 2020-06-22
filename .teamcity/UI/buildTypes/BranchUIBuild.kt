@@ -8,7 +8,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 
 object BranchUIBuild : BuildType ({
     name = "Branch Build and Test"
-    templates(ui.templates.BuildAndTestUITemplate)
+    templates(_self.templates.BuildAndTestUITemplate)
 
     artifactRules = "+:%project.directory%/eng/*.nupkg"
 

@@ -12,9 +12,6 @@ object UIProject : Project({
     buildType(ui.buildTypes.BranchUIBuild)
     buildType(ui.buildTypes.DeployUIBuild)
 
-    template(ui.templates.BuildAndTestUITemplate)
-    template(ui.templates.PullRequestTemplate)
-
     params{
         param("project.directory", "./fixitfriday.ui");
         param("octopus.release.version","<placeholder value>")
