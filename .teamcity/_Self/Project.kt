@@ -18,8 +18,8 @@ object FixItFridayProject : Project({
         param("vcs.checkout.rules","""
             +:.teamcity => .teamcity
             +:%project.directory% => %project.directory%
-            +:LICENSE =>
-            +:NOTICES.md =>
+            +:./LICENSE =>
+            +:./NOTICES.md =>
         """.trimIndent())
     }
 
