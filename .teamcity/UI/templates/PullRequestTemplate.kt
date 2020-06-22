@@ -11,7 +11,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 
 object PullRequestTemplate : BuildAndTestBaseClass() {
     init {
-        name = "PullRequestTemplate"
+        name = "Pull Request Node.js Template"
         id = RelativeId("PullRequestTemplate")
 
         features {
