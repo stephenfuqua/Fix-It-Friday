@@ -21,9 +21,5 @@ object APIProject : Project({
         param("octopus.release.version","<placeholder value>")
         param("octopus.release.project", "Fix-it-Friday API")
         param("octopus.project.id", "Projects-111")
-        param("vcs.checkout.rules","""
-            +:.teamcity => .teamcity
-            +:%project.directory% => %project.directory%
-        """.trimIndent())
     }
 })
