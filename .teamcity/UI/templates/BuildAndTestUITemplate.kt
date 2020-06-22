@@ -7,6 +7,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.powerShell
 object BuildAndTestUITemplate : BuildAndTestBaseClass() {
     init {
         name = "Build and Test Fix-it-Friday UI"
-        id = "EdFi_AnalyticsTeam_FixItFriday_BuildAndTestUITemplate"
+        id = RelativeId("BuildAndTestUITemplate")
     }
 }

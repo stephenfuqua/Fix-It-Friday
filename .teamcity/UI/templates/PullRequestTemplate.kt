@@ -12,7 +12,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 object PullRequestTemplate : BuildAndTestBaseClass() {
     init {
         name = "PullRequestTemplate"
-        id = "EdFi_AnalyticsTeam_FixItFriday_PullRequestTemplate"
+        id = RelativeId("PullRequestTemplate")
 
         features {
             commitStatusPublisher {
