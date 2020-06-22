@@ -8,15 +8,9 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 
 object BranchUIBuild : BuildType ({
     name = "Branch Build and Test"
-    templates(_self.templates.BuildAndTestUITemplate)
+    templates(_self.templates.BuildAndTestTemplate)
 
     artifactRules = "+:%project.directory%/eng/*.nupkg"
-
-    features {
-        // Default setting is to clean before next build
-        swabra {
-        }
-    }
 
     steps {
         // Additional packaging step to augment the template build
@@ -30,16 +24,6 @@ object BranchUIBuild : BuildType ({
                     .\build-package.ps1 -BuildCounter %build.counter%
                 """.trimIndent()
             }
-        }
-    }
-
-    triggers {
-        vcs {
-            id ="vcsTrigger"
-            quietPeriodMode = VcsTrigger.QuietPeriodMode.USE_CUSTOM
-            quietPeriod = 120
-            triggerRules = "+:**"
-            branchFilter = "+:<default>"
         }
     }
 })
