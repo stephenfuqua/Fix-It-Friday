@@ -19,12 +19,6 @@ object FixItFridayProject : Project({
         """.trimIndent())
         param("octopus.deploy.timeout", "00:45:00")
         param("octopus.release.environment", "Integration")
-        param("vcs.checkout.rules","""
-            +:.teamcity => .teamcity
-            +:%project.directory% => %project.directory%
-            +:./LICENSE =>
-            +:./NOTICES.md =>
-        """.trimIndent())
     }
 
     subProject(ui.UIProject)
