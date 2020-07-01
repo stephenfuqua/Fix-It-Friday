@@ -14,6 +14,7 @@
   <files>
     <file src="..\..\LICENSE" />
     <file src="..\..\NOTICES.md" />
+    <file src=".\Windows\*" target="windows" />
     <!-- NB: nuget.exe does not handle widlcards with forward-slash paths. Must use back-slash. -->
     <file src="..\dist\**" target="dist" />
   </files>
