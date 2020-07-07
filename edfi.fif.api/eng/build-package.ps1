@@ -30,9 +30,29 @@ function Invoke-NuGetPack{
     $FullVersion
   )
 
-  Write-Host "&nuget.exe" @parameters -ForegroundColor Magenta
+  Write-Host "Executing: &nuget.exe" @parameters -ForegroundColor Magenta
   &nuget.exe @parameters
 }
+
+function Invoke-PrepForDistribution {
+  # The normal `nest build` output does not include the node modules required
+  # for distribution. Copy the required files to the dist directory and run
+  # `yarn install --prod` to load only the required modules.
+  $dist = "$PSScriptRoot/../dist"
+  Copy-Item -Path "$PSScriptRoot/../package.json" -Destination $dist -Force
+  Copy-Item -Path "$PSScriptRoot/../yarn.lock" -Destination $dist -Force
+  Push-Location $dist
+  Write-Host "Executing: &yarn install --prod" -ForegroundColor Magenta
+  &yarn install --prod
+  Pop-Location
+
+  if ($LASTEXITCODE -ne 0) {
+    Write-Error "Yarn install failed."
+    Exit
+  }
+}
+
+Invoke-PrepForDistribution
 
 $version = Read-VersionNumberFromPackageJson
 Invoke-NuGetPack -FullVersion "$version-pre$($BuildCounter.PadLeft(4,'0'))"
