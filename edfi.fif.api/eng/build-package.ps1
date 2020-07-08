@@ -30,31 +30,37 @@ function Invoke-NuGetPack{
     $FullVersion
   )
 
-  Write-Host "Executing: &nuget.exe" @parameters -ForegroundColor Magenta
+  Write-Host "Executing: nuget.exe" @parameters -ForegroundColor Magenta
   &nuget.exe @parameters
 }
 
 function Invoke-PrepForDistribution {
   # The normal `nest build` output does not include the node modules required
-  # for distribution. Copy the required files to the dist directory and run
-  # `yarn install --prod` to load only the required modules.
-  $dist = "$PSScriptRoot/../dist"
-  Copy-Item -Path "$PSScriptRoot/../package.json" -Destination $dist -Force
-  Copy-Item -Path "$PSScriptRoot/../yarn.lock" -Destination $dist -Force
-
-  Push-Location $dist
-  Write-Host "Executing: &yarn install --prod" -ForegroundColor Magenta
-  &yarn install --prod
-  Pop-Location
+  # for distribution. Convert yarn.lock to package-lock.json and copy into the
+  # dist directory.
+  Push-Location "$PSScriptRoot/../"
+  Write-Host "Executing: yarn synp -s ./yarn.lock" -ForegroundColor Magenta
+  &yarn synp -s .\yarn.lock
 
   if ($LASTEXITCODE -ne 0) {
-    Write-Error "Yarn install failed."
+    Write-Error "Lock file conversion failed."
+    Pop-Location
     Exit
   }
 
-  # Also need to copy the *.graphql files, which are not included in the
-  # dist output from `yarn build`.
-  Copy-Item -Path "$PSScriptRoot/../src/graphql/schema" -Destination "$dist/graphql/schema"
+  Move-Item -Path "package-lock.json" -Destination "./dist" -Force
+
+  # Also need a copy of package.json
+  Copy-Item -Path "package.json" -Destination "./dist" -Force
+
+  # Copy the *.graphql files, which are not included in the dist output
+  Copy-Item -Path "./src/graphql/schema" -Destination "./dist/graphql" -Force -Recurse
+  Pop-Location
+}
+
+if (-not (Test-Path "$PSScriptRoot/../dist")) {
+  Write-Error "Run `yarn build` before calling this script"
+  Exit
 }
 
 Invoke-PrepForDistribution
