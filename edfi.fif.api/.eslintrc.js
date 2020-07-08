@@ -13,21 +13,27 @@ module.exports = {
         "**/*.test.ts",
         "**/*.test.tsx",
         "**/*.spec.ts",
+        "**/*.e2e-spec.ts",
       ],
       env: {
         jest: true
       },
       rules: {
-        "linebreak-style" : ["error", "unix"],
+        "linebreak-style": [
+          "error",
+          "unix"
+        ],
         "import/no-extraneous-dependencies": [
           "error",
           {
             "devDependencies": [
               "**/*.test.ts",
               "**/*.test.tsx",
-              "**/*.spec.ts"]
-            }
-          ]
+              "**/*.spec.ts",
+              "**/*.e2e-spec.ts"
+            ]
+          }
+        ]
       }
     }
   ]
