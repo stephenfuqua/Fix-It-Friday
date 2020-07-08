@@ -4,6 +4,7 @@
 # See the LICENSE and NOTICES files in the project root for more information.
 
 #requires -version 5
+#requires -RunAsAdministrator
 
 [CmdletBinding()]
 param(
@@ -11,10 +12,31 @@ param(
   $InstallPath = "c:\Ed-Fi\Fix-it-Friday\API",
 
   [string]
-  $WinSWUrl = "https://github.com/winsw/winsw/releases/download/v2.9.0/WinSW.NETCore31.zip"
+  $WinSWUrl = "https://github.com/winsw/winsw/releases/download/v2.9.0/WinSW.NETCore31.zip",
+
+  [string]
+  $DbServer = "localhost",
+
+  [int]
+  $DbPort = 5432,
+
+  [string]
+  $DbUserName = "postgres",
+
+  [string]
+  [Parameter(Mandatory=$true)]
+  $DbPassword,
+
+  [string]
+  $DbName = "fixitfriday",
+
+  [int]
+  $HttpPort = 3000
 )
 
 # TODO: insure this is run as an administrator
+
+# TODO: ensure node.js exists with minimum version
 
 # TODO: refactor to share functions instead of duplicate them
 # in various application installer scripts.
@@ -59,11 +81,16 @@ function Get-HelperAppIfNotExists {
 function Install-WebApplication {
   $parameters = @{
     Path = "$PSScriptRoot\..\dist"
-    Destination = "$InstallPath\dist"
+    Destination = $InstallPath
     Recurse = $true
     Force = $true
   }
   Copy-Item @parameters
+
+  Push-Location "$InstallPath\dist"
+  Write-Host "Executing: npm install --production"
+  &npm install --production
+  Pop-Location
 }
 
 function Install-NodeService {
@@ -104,11 +131,25 @@ function Install-NodeService {
   &$fixItFridayApiExe start
 }
 
+function New-DotEnvFile {
+  $fileContents = @"
+FIF_API_DB_HOST = '$DbServer'
+FIF_API_DB_PORT = $DbPort
+FIF_API_DB_USERNAME ='$DbUserName'
+FIF_API_DB_PASSWORD = '$DbPassword'
+FIF_API_DB_DATABASE = '$DbName'
+FIF_API_HTTP_PORT = $HttpPort
+"@
+
+  $fileContents | Out-File "$InstallPath\dist\.env" -Encoding UTF8 -Force
+}
+
 Write-Host "Begin Fix-it-Friday API installation..." -ForegroundColor Yellow
 
 New-Item -Path $InstallPath -ItemType Directory -Force | Out-Null
 
 Install-WebApplication
+New-DotEnvFile
 
 $winSwVersion = Get-HelperAppIfNotExists -Url $WinSWUrl
 Install-NodeService -winSwVersion $winSwVersion
