@@ -41,6 +41,7 @@ function Invoke-PrepForDistribution {
   $dist = "$PSScriptRoot/../dist"
   Copy-Item -Path "$PSScriptRoot/../package.json" -Destination $dist -Force
   Copy-Item -Path "$PSScriptRoot/../yarn.lock" -Destination $dist -Force
+
   Push-Location $dist
   Write-Host "Executing: &yarn install --prod" -ForegroundColor Magenta
   &yarn install --prod
@@ -50,6 +51,10 @@ function Invoke-PrepForDistribution {
     Write-Error "Yarn install failed."
     Exit
   }
+
+  # Also need to copy the *.graphql files, which are not included in the
+  # dist output from `yarn build`.
+  Copy-Item -Path "$PSScriptRoot/../src/graphql/schema" -Destination "$dist/graphql/schema"
 }
 
 Invoke-PrepForDistribution
