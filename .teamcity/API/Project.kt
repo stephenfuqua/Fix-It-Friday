@@ -21,11 +21,9 @@ object APIProject : Project({
         param("octopus.release.version","<placeholder value>")
         param("octopus.release.project", "Fix-it-Friday API")
         param("octopus.project.id", "Projects-111")
-        // Include the root - giving us license, notices.md, and .teamcity.
-        // Then exclude the other projects.
         param("vcs.checkout.rules","""
-        +:.teamcity => .teamcity
-        +:%project.directory% => %project.directory%
+            +:.teamcity => .teamcity
+            +:%project.directory% => %project.directory%
         """.trimIndent())
     }
 })
