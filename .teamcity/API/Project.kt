@@ -24,12 +24,8 @@ object APIProject : Project({
         // Include the root - giving us license, notices.md, and .teamcity.
         // Then exclude the other projects.
         param("vcs.checkout.rules","""
-            +:. =>
-            -:fixitfriday.ui
-            -:edfi.fif.database
-            -:edfi.fif.api.netcore
-            -:edfi.fixitfriday.installer
-            -:fixitfriday.api
+        +:.teamcity => .teamcity
+        +:%project.directory% => %project.directory%
         """.trimIndent())
     }
 })
