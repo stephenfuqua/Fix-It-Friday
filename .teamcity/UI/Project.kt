@@ -17,19 +17,15 @@ object UIProject : Project({
     buildType(ui.buildTypes.DeployUIBuild)
 
     params{
-        param("project.directory", "./fixitfriday.ui");
+        param("project.directory", "./hold/fixitfriday.ui");
         param("octopus.release.version","<placeholder value>")
         param("octopus.release.project", "Fix-it-Friday UI")
         param("octopus.project.id", "Projects-112")
         // Include the root - giving us license, notices.md, and .teamcity.
         // Then exclude the other projects.
         param("vcs.checkout.rules","""
-            +:. =>
-            -:edfi.fif.api
-            -:edfi.fif.database
-            -:edfi.fif.api.netcore
-            -:edfi.fixitfriday.installer
-            -:fixitfriday.api
+        +:.teamcity => .teamcity
+        +:%project.directory% => %project.directory%
         """.trimIndent())
     }
 })
