@@ -49,7 +49,7 @@ object BuildOnlyPullRequestTemplate : BuildBaseClass() {
                 branchFilter = """
                     +:*
                     -:<default>
-                    -:refs/heads
+                    -:refs/heads/*
                 """.trimIndent()
             }
         }

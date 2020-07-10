@@ -49,7 +49,7 @@ object PullRequestTemplate : BuildAndTestBaseClass() {
                 branchFilter = """
                     +:*
                     -:<default>
-                    -:refs/heads
+                    -:refs/heads/*
                 """.trimIndent()
             }
         }
