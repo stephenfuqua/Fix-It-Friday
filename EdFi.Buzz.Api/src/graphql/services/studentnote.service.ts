@@ -12,10 +12,10 @@ import StudentNoteEntity from '../entities/studentnote.entity';
 export default class StudentNoteService {
   // eslint-disable-next-line no-useless-constructor
   constructor(
-    @InjectRepository(StudentNoteEntity) private readonly FixItFridayStudentNotesRepository: Repository<StudentNoteEntity>,
+    @InjectRepository(StudentNoteEntity) private readonly BuzzStudentNotesRepository: Repository<StudentNoteEntity>,
   ) {}
 
   async addStudentNote(note: StudentNoteEntity): Promise<StudentNoteEntity> {
-    return this.FixItFridayStudentNotesRepository.save(note);
+    return this.BuzzStudentNotesRepository.save(note);
   }
 }
