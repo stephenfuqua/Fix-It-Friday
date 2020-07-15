@@ -4,6 +4,7 @@
 // See the LICENSE and NOTICES files in the project root for more information.
 
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { config } from 'dotenv';
 
 config({ path: `${__dirname}/../../../.env` });
 @Entity({ schema: `${process.env.BUZZ_API_DB_SCHEMA}`, name: 'studentnote', synchronize: false })
